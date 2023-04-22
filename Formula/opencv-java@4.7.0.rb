@@ -1,4 +1,4 @@
-class OpencvAT470 < Formula
+class OpencvJavaAT470 < Formula
   desc "Open source computer vision library"
   homepage "https://opencv.org/"
   url "https://github.com/opencv/opencv/archive/refs/tags/4.7.0.tar.gz"
@@ -30,6 +30,9 @@ class OpencvAT470 < Formula
   depends_on "tbb"
   depends_on "vtk"
   depends_on "webp"
+  depends_on "openjdk"
+  depends_on "ant"
+  
 
   uses_from_macos "zlib"
 
