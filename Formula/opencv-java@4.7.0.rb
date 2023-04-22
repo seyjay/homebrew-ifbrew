@@ -32,7 +32,6 @@ class OpencvJavaAT470 < Formula
   depends_on "webp"
   depends_on "openjdk"
   depends_on "ant"
-
   
 
   uses_from_macos "zlib"
