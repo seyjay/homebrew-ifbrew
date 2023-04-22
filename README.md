@@ -4,6 +4,7 @@
 
 `brew install ifr/ifbrew/<formula>`
 
+
 Or `brew tap ifr/ifbrew` and then `brew install <formula>`.
 
 ## Documentation
