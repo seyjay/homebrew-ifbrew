@@ -33,8 +33,6 @@ class OpencvJavaAT470 < Formula
   depends_on "vtk"
   depends_on "webp"
 
-  
-
   uses_from_macos "zlib"
 
   fails_with gcc: "5" # ffmpeg is compiled with GCC
