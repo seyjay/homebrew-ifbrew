@@ -13,6 +13,7 @@ class OpencvJavaAT470 < Formula
 
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
+  depends_on "ant"
   depends_on "ceres-solver"
   depends_on "eigen"
   depends_on "ffmpeg"
@@ -24,14 +25,13 @@ class OpencvJavaAT470 < Formula
   depends_on "numpy"
   depends_on "openblas"
   depends_on "openexr"
+  depends_on "openjdk"
   depends_on "openjpeg"
   depends_on "protobuf"
   depends_on "python@3.11"
   depends_on "tbb"
   depends_on "vtk"
   depends_on "webp"
-  depends_on "openjdk"
-  depends_on "ant"
 
   
 
