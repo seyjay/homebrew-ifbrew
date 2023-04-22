@@ -99,7 +99,7 @@ class OpencvJavaAT470 < Formula
       -DPYTHON3_EXECUTABLE=#{which(python3)}
     ]
 
-    # Disable precompiled headers and force opencv to use brewed libraries on Linux
+    # Disable precompiled headers and force opencv to use brewed libraries on Linux.
     if OS.linux?
       args += %W[
         -DENABLE_PRECOMPILED_HEADERS=OFF
