@@ -128,7 +128,7 @@ class OpencvJavaAT455 < Formula
       lib.install Dir["3rdparty/**/*.a"]
     end
 
-    # Prevent dependents from using fragile Cellar paths
+    # Prevent dependents from using fragile Cellar paths.
     inreplace lib/"pkgconfig/opencv#{version.major}.pc", prefix, opt_prefix
   end
 
