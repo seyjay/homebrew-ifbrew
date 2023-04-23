@@ -1,4 +1,4 @@
-class OpencvAT455 < Formula
+class OpencvJavaAT455 < Formula
   desc "Open source computer vision library"
   homepage "https://opencv.org/"
   url "https://github.com/opencv/opencv/archive/4.5.5.tar.gz"
@@ -13,6 +13,7 @@ class OpencvAT455 < Formula
 
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
+  depends_on "ant"
   depends_on "ceres-solver"
   depends_on "eigen"
   depends_on "ffmpeg@4"
@@ -24,8 +25,9 @@ class OpencvAT455 < Formula
   depends_on "numpy"
   depends_on "openblas"
   depends_on "openexr"
+  depends_on "openjdk"
   depends_on "protobuf"
-  depends_on "python@3.9"
+  depends_on "python@3.11"
   depends_on "tbb"
   depends_on "vtk"
   depends_on "webp"
@@ -37,6 +39,10 @@ class OpencvAT455 < Formula
   resource "contrib" do
     url "https://github.com/opencv/opencv_contrib/archive/4.5.5.tar.gz"
     sha256 "a97c2eaecf7a23c6dbd119a609c6d7fae903e5f9ff5f1fe678933e01c67a6c11"
+  end
+
+  def python3
+    "python3.11"
   end
 
   def install
@@ -63,7 +69,8 @@ class OpencvAT455 < Formula
       -DBUILD_WEBP=OFF
       -DBUILD_ZLIB=OFF
       -DBUILD_opencv_hdf=OFF
-      -DBUILD_opencv_java=OFF
+      -DBUILD_opencv_java=ON
+      -DOPENCV_JAVA_TARGET_VERSION=1.8
       -DBUILD_opencv_text=ON
       -DOPENCV_ENABLE_NONFREE=ON
       -DOPENCV_EXTRA_MODULES_PATH=#{buildpath}/opencv_contrib/modules
@@ -76,14 +83,14 @@ class OpencvAT455 < Formula
       -DWITH_GPHOTO2=OFF
       -DWITH_GSTREAMER=OFF
       -DWITH_JASPER=OFF
-      -DWITH_OPENEXR=ON
+      -DWITH_OPENEXR=OFF
       -DWITH_OPENGL=OFF
       -DWITH_QT=OFF
       -DWITH_TBB=ON
       -DWITH_VTK=ON
       -DBUILD_opencv_python2=OFF
       -DBUILD_opencv_python3=ON
-      -DPYTHON3_EXECUTABLE=#{Formula["python@3.9"].opt_bin}/python3
+      -DPYTHON3_EXECUTABLE=#{which(python3)}
     ]
 
     # Disable precompiled headers and force opencv to use brewed libraries on Linux
@@ -138,7 +145,7 @@ class OpencvAT455 < Formula
                     "-o", "test"
     assert_equal `./test`.strip, version.to_s
 
-    output = shell_output(Formula["python@3.9"].opt_bin/"python3 -c 'import cv2; print(cv2.__version__)'")
+    output = shell_output("#{python3} -c 'import cv2; print(cv2.__version__)'")
     assert_equal version.to_s, output.chomp
   end
 end
