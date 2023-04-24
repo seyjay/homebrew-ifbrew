@@ -11,6 +11,12 @@ class OpencvJavaAT455 < Formula
     regex(/^v?(\d+(?:\.\d+)+)$/i)
   end
 
+  bottle do
+    root_url "https://github.com/seyjay/homebrew-ifbrew/releases/download/opencv-java@4.5.5-4.5.5_3"
+    rebuild 1
+    sha256 monterey: "789d96183d2c96e8152f377e1610409118b006be338e74aa70ea70891809088a"
+  end
+
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
   depends_on "ant"
